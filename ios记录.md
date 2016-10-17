@@ -1,4 +1,7 @@
-
+***
+iOS自动化测试
+工具：Instruments-iOS device-》Automation
+参考文档：
 
 ***
 iOS 常用数学函数  
