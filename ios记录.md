@@ -1,0 +1,208 @@
+
+
+***
+iOS 常用数学函数  
+
+http://blog.163.com/gf_zl818/blog/static/83808068201262551444777/
+http://www.cnblogs.com/Mr-Lin/archive/2016/08/24/5802763.html
+***
+iOS高效调试
+http://mp.weixin.qq.com/s?__biz=MjM5OTM0MzIwMQ==&mid=2652547598&idx=1&sn=4a0b6c7bc7feb892ec28b6b67b27ab85&chksm=bcd2ef008ba5661676aed9f71eae901234b5b77f4a530dc0078b711ee3222c1e7859708ed165&scene=0#wechat_redirect
+***
+"Missing Push Notification Entitlement"警告-----以及解决方法
+http://www.cnblogs.com/chongyangcui/p/5022364.html
+
+***
+　　　升到iOS10之后，需要设置权限的有：
+
+麦克风权限：Privacy - Microphone Usage Description 是否允许此App使用你的麦克风？
+相机权限： Privacy - Camera Usage Description 是否允许此App使用你的相机？
+相册权限： Privacy - Photo Library Usage Description 是否允许此App访问你的媒体资料库？
+通讯录权限： Privacy - Contacts Usage Description 是否允许此App访问你的通讯录？
+蓝牙权限：Privacy - Bluetooth Peripheral Usage Description 是否许允此App使用蓝牙？
+语音转文字权限：Privacy - Speech Recognition Usage Description 是否允许此App使用语音识别？
+日历权限：Privacy - Calendars Usage Description 
+定位权限：Privacy - Location When In Use Usage Description 
+定位权限: Privacy - Location Always Usage Description 
+位置权限：Privacy - Location Usage Description
+媒体库权限：Privacy - Media Library Usage Description
+健康分享权限：Privacy - Health Share Usage Description
+健康更新权限：Privacy - Health Update Usage Description
+运动使用权限：Privacy - Motion Usage Description
+音乐权限：Privacy - Music Usage Description
+提醒使用权限：Privacy - Reminders Usage Description
+Siri使用权限：Privacy - Siri Usage Description
+电视供应商使用权限：Privacy - TV Provider Usage Description
+视频用户账号使用权限：Privacy - Video Subscriber Account Usage Description
+***
+状态栏高度20    导航栏高度44
+***
+使用第三方库TPKeyboardAvoidingScrollView出现的bug 解决方案：
+http://blog.csdn.net/wenhaiwang/article/details/46472567
+***
+Undefined symbols for architecture i386：新版QQ去除了i386架构，直接在真机上测试就可以了
+qq互联sdk  支持cpu指令集版本由arm7、arm7s、arm64、i386 、x86_64 变更到 armv7、x86_64、arm64
+由于最新QQ sdk支持的CPU指令集调整，最新5.2.1版本支持的CPU架构为：armv7\x86_64\arm64，不再支持i386架构，各位开发者注意不要在架构支持中勾选i386或在模拟器调试！！！
+***
+枚举 switch 
+***
+ UILabel调整字间距
+ 1、引入 CoreText.framework
+2\
+
+#import <CoreText/CoreText.h>
+2\
+
+```
+
+NSMutableAttributedString *attributedString =[[NSMutableAttributedString alloc]initWithString:@"你的字符串"];  
+    long number = 5.0f;//间距  
+    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);  
+    [attributedString addAttribute:(id)kCTKernAttributeName value:(__bridge id)num range:NSMakeRange(0,[attributedString length])];  
+    CFRelease(num);  
+     [ColumnIntroduce setAttributedText:attributedString];
+       
+```
+***
+```
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    if (application.applicationState == UIApplicationStateActive) {
+        NSLog(@"active");
+        //程序当前正处于前台
+        [application setApplicationIconBadgeNumber:0];
+        
+        NSString *messageAlert = [[userInfo objectForKey:@"aps"]objectForKey:@"alert"];  
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"远程通知" message:messageAlert delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"前往", nil];
+        alertView.delegate = self;
+
+        [alertView show];
+        // 8秒后将退出弹框
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alertView dismissWithClickedButtonIndex:0 animated:YES];
+
+        });
+    }
+else if(application.applicationState == UIApplicationStateInactive)
+    {
+        NSLog(@"inactive");
+        //程序处于后台
+       
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"123456" object:nil userInfo:userInfo];
+        
+    }
+    // IOS 7 Support Required
+    [APService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+```
+
+```
+
+在你首页控制器的添加通知，并且跳转到每个控制器
+- （void）viewdidload
+{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pushNotification:) name:@"123456" object:nil];
+    
+}
+- (void)pushNotification:(NSNotification *)notification
+{
+    NSDictionary *dict = notification.userInfo;
+    
+    // kpiid  其实就是后台传出来需要点击cell的id
+    GTLog(@"===notification===%@",[dict valueForKey:@"kpiid"]);
+    
+    [self selectKPIModuleId:[[dict valueForKey:@"kpiid"] integerValue]];
+}
+```
+```
+
+/************************************************
+*
+*
+*  点击相对应的kpiid模块，跳转到相对应的kpi控制器
+*
+*
+************************************************/
+- (void)selectKPIModuleId:(int)kpiid     // 此处是tableview  didselect方法中单独提取的方法
+{
+    
+    //销售利润
+    if(kpiid==1){
+        ProfitViewController *pyc=[[ProfitViewController alloc] initWithNibName:@"ProfitViewController" bundle:nil];
+        [(UINavigationController *)self.mm_drawerController.centerViewController pushViewController:pyc animated:YES];
+        [[TimeTool sharedTimeTool] timeToolBTypeOfStartWhenIntoViewCurrentModuleID:1];
+        return;
+    }
+
+```
+
+***
+UIViewController self.view 位置问题：
+translucent：判断是否覆盖内容
+  self.tabBarController.tabBar.translucent = true;
+  self.navigationController.navigationBar.translucent = true;
+
+***
+UITableView 留白问题
+self.automaticallyAdjustsScrollViewInsets = NO;
+看这个UIViewController的这个属性你就明白了，此属性默认为YES，这样UIViewController下如果只有一个UIScollView或者其子类，那么会自动留出空白，让scollview滚动经过各种bar下面时能隐约看到内容。但是每个UIViewController只能有唯一一个UIScollView或者其子类，如果超过一个，需要将此属性设置为NO,自己去控制留白以及坐标问题。
+***
+记录：
+自定义了TabBarController 之后必须实现以下
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.selectedViewController beginAppearanceTransition: YES animated: animated];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [self.selectedViewController endAppearanceTransition];
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [self.selectedViewController beginAppearanceTransition: NO animated: animated];
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [self.selectedViewController endAppearanceTransition];
+} 
+***
+向字典2对象中添加整个字典对象3
+
+[dic2 addEntriesFromDictionary:dic3];
+
+将空字典1对象内容设置与字典2对象相同
+
+[dic1 setDictionary:dic2];
+
+
+***
+Xcode 快捷键：
+Command 1~ 8: 跳转到导航区的不同位置
+
+Command 0 :显示/隐藏导航区
+Command Alt 0: 显示/关闭工具区.
+Command + Shift + Y:显示/隐藏调试区
+
+Command Alt 1~ 6:在不同检测器之间跳转
+Control Command Alt 1~4: 在不同库之间跳转
+Control 1~ 6: 在Jump bar的不同标签页的跳转。
+
+
+Command + Enter: 显示标准单窗口编辑器
+Command Alt Enter:打开Assistant editor
+Command Alt Shift Enter: 打开版本控制编辑器
+
+Command + Shift + J，可展示当前你在工程导航器中打开的文件
+Cmd + . 方便地暂停运行iOS模拟器
+
+变量、类或者方法名 Option+双击 跳转到Xcode提供的文档
+Option + Left点击
+
+集体缩进 cmd+ { 或 }
