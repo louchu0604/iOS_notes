@@ -1,6 +1,7 @@
+友盟QQ平台分享utf8encoding 以及 http前不允许有空格 1.会报错 2.无法弹出正常的分享页面
 ***
-iOS自动化测试
-工具：Instruments-iOS device-》Automation
+iOS 交互测试
+工具：新建一个Target-》UI Test
 参考文档：
 
 ***
