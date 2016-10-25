@@ -1,3 +1,5 @@
+iOS发布APP 报错 "No .app bundles found in the package"
+***
 友盟QQ平台分享utf8encoding 以及 http前不允许有空格 1.会报错 2.无法弹出正常的分享页面
 ***
 iOS 交互测试
