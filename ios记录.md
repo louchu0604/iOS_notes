@@ -1,4 +1,5 @@
-iOS发布APP 报错 "No .app bundles found in the package"
+iOS发布APP 报错 "No .app bundles found in the package"：
+10.12下 用Xcode8自带的工具进行提交，亲测没有问题
 ***
 友盟QQ平台分享utf8encoding 以及 http前不允许有空格 1.会报错 2.无法弹出正常的分享页面
 ***
