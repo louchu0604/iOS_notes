@@ -1,3 +1,7 @@
+补充CPU、Energy impact知识
+找出app运行一段时间后，手机过热的具体原因
+
+***
 iOS发布APP 报错 "No .app bundles found in the package"：
 10.12下 用Xcode8自带的工具进行提交，亲测没有问题
 ***
