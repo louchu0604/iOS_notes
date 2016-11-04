@@ -1,3 +1,13 @@
+调整字间距
+加入CoreText.framework 头导入#import <CoreText/CoreText.h>
+ NSMutableAttributedString *attributedString =[[NSMutableAttributedString alloc]initWithString:time];
+    long number = 2.0f;//间距
+    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
+    [attributedString addAttribute:(id)kCTKernAttributeName value:(__bridge id)num range:NSMakeRange(0,[attributedString length])];
+    CFRelease(num);
+    _title.attributedText = attributedString;
+***
+
 
 日期型字符串排序
 ***
