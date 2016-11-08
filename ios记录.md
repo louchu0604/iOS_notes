@@ -1,3 +1,14 @@
+***
+UITableViewCell使用cell和cell.contentView的区别
+1、addSubview
+在UITableViewCell实例上添加子视图，有两种方式：[cell  addSubview:view]或[cell.contentView addSubview:view],一般情况下，两种方式没有区别。但是在多选编辑状态，直接添加到cell上的子视图将不会移动，而添加在contentView上的子视图会随着整体右移。所以，推荐使用[cell.contentView addSubview:view]方式添加子视图。
+
+
+
+
+2、backgroundColor
+cell.backgroundColor = [UIColor grayColor];或cell.contentView.backgroudColor = [UIColor grayColor];一般情况下，两种方式效果一样。但是在多选编辑状态，直接设置cell的背景色可以保证左侧多选框部分的背景色与cell背景色一致，而设置contentView背景色，左侧多选框的背景色会是UITableView的背景色或UITableView父视图背景色，如果需要保证颜色一致，必须设置cell的背景色而不是cell.contentView的。
+***
 调整字间距
 加入CoreText.framework 头导入#import <CoreText/CoreText.h>
  NSMutableAttributedString *attributedString =[[NSMutableAttributedString alloc]initWithString:time];
