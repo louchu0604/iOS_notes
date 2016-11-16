@@ -1,4 +1,9 @@
 ***
+支持简单手势返回上层页面，其他的可以用addTarget自定义方法
+self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    self.navigationController.interactivePopGestureRecognizer.enabled = true;
+
+***
 UITableViewCell使用cell和cell.contentView的区别
 1、addSubview
 在UITableViewCell实例上添加子视图，有两种方式：[cell  addSubview:view]或[cell.contentView addSubview:view],一般情况下，两种方式没有区别。但是在多选编辑状态，直接添加到cell上的子视图将不会移动，而添加在contentView上的子视图会随着整体右移。所以，推荐使用[cell.contentView addSubview:view]方式添加子视图。
