@@ -1,4 +1,17 @@
 ***
+设置响应区域
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch；
+
+设置具体时间
+- (void)handle_tap:(UITapGestureRecognizer *)recognizer
+{
+    CGPoint point = [recognizer locationInView:_headerView];
+    if (CGRectContainsPoint(CGRectMake(SCREEN_WIDTH-scale_device_value(100), 0, scale_device_value(100), scale_device_value(100)), point)) {
+        [self removeTip];
+    }
+}
+
+***
 支持简单手势返回上层页面，其他的可以用addTarget自定义方法
 self.navigationController.interactivePopGestureRecognizer.delegate = self;
     self.navigationController.interactivePopGestureRecognizer.enabled = true;
