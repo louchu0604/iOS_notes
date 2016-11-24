@@ -1,3 +1,42 @@
+
+***
+iOS开发－获取当前设备信息
+
+1.iOS获取当前app的名称和版本号 
+2.NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+CFShow(infoDictionary);
+// app名称
+NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+// app版本
+NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+// app build版本
+NSString *app_build = [infoDictionary objectForKey:@"CFBundleVersion"];
+2.iOS获取当前系统版本号
+
+NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];
+
+float phoneVersion = [[[UIDevice currentDevice] systemVersion] floatValue]
+3.iOS获取当前语言 
+NSArray *languages = [NSLocale preferredLanguages];
+NSString *currentLanguage = [languages objectAtIndex:0];
+4.获得iphone唯一标识符UDID(序列号)
+
+NSString *UDID_No = [[UIDevice currentDevice] uniqueIdentifier];
+5.当前手机型号
+
+NSString* phoneModel = [[UIDevice currentDevice] model];
+6.获得手机别名（用户定义的名称）
+
+NSString* userPhoneName = [[UIDevice currentDevice] name];
+7.获得设备名称
+ 
+NSString* deviceName = [[UIDevice currentDevice] systemName];
+8.地方型号（国际化区域名称）
+ 
+NSString* localPhoneModel = [[UIDevice currentDevice] localizedModel];
+
+
+
 ***
 设置响应区域
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch；
