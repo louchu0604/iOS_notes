@@ -1,3 +1,12 @@
+***
+
+1、NSURLRequestUseProtocolCachePolicy NSURLRequest默认的cache policy，使用Protocol协议定义。
+2、NSURLRequestReloadIgnoringCacheData 忽略缓存直接从原始地址下载。
+3、NSURLRequestReturnCacheDataElseLoad 只有在cache中不存在data时才从原始地址下载。
+4、NSURLRequestReturnCacheDataDontLoad 只使用cache数据，如果不存在cache，请求失败；用于没有建立网络连接离线模式；
+5、NSURLRequestReloadIgnoringLocalAndRemoteCacheData：忽略本地和远程的缓存数据，直接从原始地址下载，与NSURLRequestReloadIgnoringCacheData类似。
+6、NSURLRequestReloadRevalidatingCacheData:验证本地数据与远程数据是否相同，如果不同则下载远程数据，否则使用本地数据。
+
 
 ***
 iOS开发－获取当前设备信息
