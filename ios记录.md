@@ -1,4 +1,16 @@
 ***
+虚线边框
+ CAShapeLayer *borderLayer = [CAShapeLayer layer];
+    borderLayer.fillColor = [UIColor clearColor].CGColor;
+    borderLayer.strokeColor = RGB(200, 200, 200).CGColor;
+    borderLayer.path = [UIBezierPath bezierPathWithRect:bk.bounds].CGPath;
+    borderLayer.lineWidth = 1;
+    borderLayer.lineCap = @"square";
+    borderLayer.lineDashPattern = @[@2, @2];线的长度，和线的间隔
+    [bk.layer addSublayer:borderLayer];
+
+
+***
 
 1、NSURLRequestUseProtocolCachePolicy NSURLRequest默认的cache policy，使用Protocol协议定义。
 2、NSURLRequestReloadIgnoringCacheData 忽略缓存直接从原始地址下载。
