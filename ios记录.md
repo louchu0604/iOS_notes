@@ -1,3 +1,8 @@
+ ***
+ 播放器修改音量以及获取音量 需导入头文件<MediaPlayer/MediaPlayer.h>
+ MPMusicPlayerController *mpc = [MPMusicPlayerController applicationMusicPlayer];
+                    mpc.volume = ff;  //0.0~1.0
+
 ***
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 使用：
