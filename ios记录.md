@@ -1,4 +1,8 @@
- ***
+***
+NSTimer fire 函数
+You can use this method to fire a repeating timer without interrupting its regular firing schedule. If the timer is non-repeating, it is automatically invalidated after firing, even if its scheduled fire date has not arrived.
+
+***
  播放器修改音量以及获取音量 需导入头文件<MediaPlayer/MediaPlayer.h>
  MPMusicPlayerController *mpc = [MPMusicPlayerController applicationMusicPlayer];
                     mpc.volume = ff;  //0.0~1.0
