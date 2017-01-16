@@ -1,3 +1,27 @@
+跳转到设置
+[[UIApplication sharedApplication] openURL:[NSURL
+URLWithString:UIApplicationOpenSettingsURLString]];
+***
+
+解决Xcode断点调试值都为nil的问题：
+在Build Settings中 Optimization Level 设置成 None
+***
+快捷键：
+跳转到光标所在行：CTRL + L
+Debug: command+enter
+Build: command+B
+Run: command+R
+***
+ios10:
+Native://type=getSession    像这种URL scheme根本就不符合规范的～而下面两个符合URL scheme规范，当然就OK了～
+标准的URL scheme是：<URL前缀>://<URL描述>?<参数1>=<值1>&<参数2>=<值2>
+/*funcname:encodeURIComponent(params)导致 :% 出现，ios10中会出错*/
+
+
+ios10之前：因为这些系统没有做严格筛选～ 
+
+
+
 ***
 NSTimer fire 函数
 You can use this method to fire a repeating timer without interrupting its regular firing schedule. If the timer is non-repeating, it is automatically invalidated after firing, even if its scheduled fire date has not arrived.
@@ -87,6 +111,7 @@ NSString* localPhoneModel = [[UIDevice currentDevice] localizedModel];
 
 ***
 支持简单手势返回上层页面，其他的可以用addTarget自定义方法
+要加在第0位
 self.navigationController.interactivePopGestureRecognizer.delegate = self;
     self.navigationController.interactivePopGestureRecognizer.enabled = true;
 
