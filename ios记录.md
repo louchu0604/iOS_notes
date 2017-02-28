@@ -1,3 +1,19 @@
+LLDB调试：
+p：
+（用于输出基本类型）
+po：
+（用于输出 Objective-C 对象）
+expr：  
+可以在调试时动态执行指定表达式，并将结果打印出来。常用于在调试过程中修改变量的值。
+call
+call即是调用的意思。用于输出新声明对象的值
+call [self.view setBackgroundColor:[UIColor redColor]] view的背景颜色变成红色
+bt 
+打印调用堆栈，加all可打印所有thread的堆栈。
+image
+image 命令可用于寻址，有多个组合命令。比较实用的用法是用于寻找栈地址对应的代码位置。
+image lookup --address 0x0000000100004af8
+***
 跳转到设置
 [[UIApplication sharedApplication] openURL:[NSURL
 URLWithString:UIApplicationOpenSettingsURLString]];
