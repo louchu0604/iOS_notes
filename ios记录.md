@@ -1,3 +1,13 @@
+关联对象
+OBJC_EXPORT void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy)
+OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
+OBJC_EXPORT void objc_removeAssociatedObjects(id object)
+设置关联对象： objc_setAssociatedObject(button, buttonKey, _imgView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+取出关联对象：- (void)buttonPress:(UIButton *)sender//headButton点击
+{    UIImageView *imageView =  objc_getAssociatedObject(sender,buttonKey);
+}
+
+***
 LLDB调试：
 p：
 （用于输出基本类型）
