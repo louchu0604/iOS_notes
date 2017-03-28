@@ -1,3 +1,6 @@
+      avplayer：缓存足够但播放延迟  [_player setAutomaticallyWaitsToMinimizeStalling:false];
+
+***
 shader声明变量类型：
 1.uniform变量
 uniform变量是外部application程序传递给（vertex和fragment）shader的变量。因此它是application通过函数glUniform**（）函数赋值的。在（vertex和fragment）shader程序内部，uniform变量就像是C语言里面的常量（const ），它不能被shader程序修改。（shader只能用，不能改）
