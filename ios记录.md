@@ -1,4 +1,18 @@
-      avplayer：缓存足够但播放延迟  [_player setAutomaticallyWaitsToMinimizeStalling:false];
+iOS定位到崩溃代码行数
+举例：
+4 Sections 0x000030eb -[BIDViewController searchDisplayController:didLoadSearchResultsTableView:] + 171
+一共包括了5部分：分别是4/Sections/0x000030eb/-[BIDVi...ew:]/171
+第1部分：堆栈输出序列号，序号越大表示代码越早被调用；
+第2部分：调用的方法所属框架（库/工程），例如Sections就是楼主您的工程；
+第3部分：调用方法的内存地址，即0x000030eb
+第4部分：调用方法名，这个非常重要，即-[BIDViewController searchDisplayController:didLoadSearchResultsTableView:]
+第5部分：调用方法编译之后的代码偏移量，这里再次强调不是行号，只是编译后的代码偏移量，但是基本上和字符数差不多，你可以通过一些文本工具，通过统计你的方法的字符偏移量大致的估计出错的行，一般误差在3~5行内。
+控制套输入：
+(lldb) image lookup --address 0x000030eb
+
+
+***
+avplayer：缓存足够但播放延迟  [_player setAutomaticallyWaitsToMinimizeStalling:false];
 
 ***
 shader声明变量类型：
