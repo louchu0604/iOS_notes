@@ -1,3 +1,43 @@
+CGImageRef
+
+***
+Analyze-静态分析
+
+检测出的常见的三种泄露
+（1）.  创建了对象，但是并没有使用。
+ Value Stored to 'XX' is never read
+ 存储在'XX'里的值从未被读取过，
+（2）. 创建了一个（指针可变的）对象，且初始化了，但是初始化的值一直没读取过。
+ Value Stored to 'str' during its initialization is never read
+（3）.调用了让某个对象引用计数加1的函数，但没有调用相应让其引用计数减1的函数。
+ Potential leak of an object stored into 'subImageRef'
+ subImageRef对象的内存单元有潜在的泄露风险
+
+- (void)leak3 {
+    CGRect rect = CGRectMake(0, 0, 50, 50);
+    UIImage *image;
+    CGImageRef subImageRef = CGImageCreateWithImageInRect(image.CGImage, rect); // subImageRef 引用计数 + 1;
+    UIImage* smallImage = [UIImage imageWithCGImage:subImageRef];
+    // 应该调用对应的函数，让subImageRef的引用计数减1,就不会泄露了
+    // CGImageRelease(subImageRef);
+    [smallImage class];
+    UIGraphicsEndImageContext();
+
+    例子二：
+        CTFontRef fontRef = CTFontCreateWithName((__bridge CFStringRef)_font.fontName, _font.pointSize, NULL);
+[_string addAttributes:[NSDictionary dictionaryWithObjectsAndKeys:(__bridge NSObject*)fontRef, (NSString*)kCTFontAttributeName, nil]
+                 range:NSMakeRange(0, [_string length])];
+
+CGColorRef colorRef = _textColor.CGColor;
+[_string addAttributes:[NSDictionary dictionaryWithObjectsAndKeys:(__bridge NSObject*)colorRef,(NSString*)kCTForegroundColorAttributeName, nil]
+                 range:NSMakeRange(0, [_string length])];
+
+    // 应该调用对应的函数，让subImageRef的引用计数减1,就不会泄露了
+    //  CFRelease(fontRef);
+
+}
+***
+
 iOS定位到崩溃代码行数
 举例：
 4 Sections 0x000030eb -[BIDViewController searchDisplayController:didLoadSearchResultsTableView:] + 171
