@@ -1,7 +1,8 @@
 ***
 如何解决“直接把密码存储在NSUserDefaults中不安全”的问题？
-把密码加密后再存储到NSUserDefaults中
+1.把密码加密后再存储到NSUserDefaults中
 iOS中提供了很多种加密算法，对于存储密码，可以使用不可逆的MD5加密。
+2.不使用NSUserDefaults保存密码，使用keyChain来保存密码
 ***
 CGImageRef
 ARC is only for NSObject。在iOS 中使用malloc分配的内存，ARC是不会处理的，需要自己进行处理
