@@ -1,4 +1,5 @@
 CGImageRef
+ARC is only for NSObject。在iOS 中使用malloc分配的内存，ARC是不会处理的，需要自己进行处理
 
 ***
 Analyze-静态分析
