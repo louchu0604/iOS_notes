@@ -1,3 +1,6 @@
+
+[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;//状态栏信息修改为白色，适用于暗色背景，default为黑色，适用于浅色背景
+***
 全局队列 主线程 NSTimer
 ***
 多用懒加载
