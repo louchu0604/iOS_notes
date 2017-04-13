@@ -1,3 +1,7 @@
+***
+测试方法以test开头。方法名前出现棱形图标表示方法名符合规则；
+规则：test[what]
+
 Unit Test
   XCTFail(format…) 生成一个失败的测试； 
 XCTAssertNil(a1, format...)为空判断，a1为空时通过，反之不通过；
