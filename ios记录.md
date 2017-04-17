@@ -1,4 +1,14 @@
+CoreAnimation调试：FPS（Frame per second）,一般小于50帧就会看到明显的掉帧。
 
+Color Blended Layers：查看图层混合情况
+Color Hits Green and Misses Red：光栅化
+Color Copied Images：
+Color Misaligned Images：图片缩放情况
+Color Offscreen-Rendered Yellow：离屏渲染
+Color Immediately 
+Color OpenGL Fast Path Blue 
+Flash Updated Region：重绘区域被标记成黄色
+***
 1.继承Inherit
 
 继承是任何一个面向对象的语言都有的特性。子类可以继承父类的属性与方法。
