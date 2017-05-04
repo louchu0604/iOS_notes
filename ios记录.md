@@ -1,3 +1,8 @@
+压缩图片 导致模糊的解决办法：
+UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+***
+
+
 CoreAnimation调试：FPS（Frame per second）,一般小于50帧就会看到明显的掉帧。
 
 Color Blended Layers：查看图层混合情况
