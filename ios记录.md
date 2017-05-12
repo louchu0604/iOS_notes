@@ -1,3 +1,7 @@
+uitextField 文字靠右排 输入空格时 ui无法显示的问题
+暂时没有更好的解决方案
+目前的方案为：编辑时靠左排 编辑结束后靠右排
+***
 压缩图片 导致模糊的解决办法：
 UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
 ***
