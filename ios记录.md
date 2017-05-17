@@ -1,3 +1,14 @@
+UILabel:
+在文本的lineBreakMode中有以下几个功能:
+
+NSLineBreakByWordWrapping = 0 //以空格为界，保留整个单词。
+NSLineBreakByCharWrapping //保留整个字符
+NSLineBreakByClipping //简单剪裁，到边界为止
+NSLineBreakByTruncatingHead //前面部分文字以……方式省略，显示尾部文字内容
+NSLineBreakByTruncatingTail //结尾部分的内容以……方式省略，显示头的文字内容。
+NSLineBreakByTruncatingMiddle //中间的内容以……方式省略，显示头尾的文字内容。
+
+***
 uitextField 文字靠右排 输入空格时 ui无法显示的问题
 暂时没有更好的解决方案
 目前的方案为：编辑时靠左排 编辑结束后靠右排
