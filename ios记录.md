@@ -1,3 +1,8 @@
+统计代码行数
+打开终端，用cd命令 定位到工程所在的目录，然后调用以下命名即可把每个源代码文件行数及总数统计出来：
+
+find . "(" -name "*.m" -or -name "*.mm" -or -name "*.cpp" -or -name "*.h" -or -name "*.rss" ")" -print | xargs wc -l
+***
 UILabel:
 在文本的lineBreakMode中有以下几个功能:
 
