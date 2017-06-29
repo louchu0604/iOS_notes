@@ -234,6 +234,10 @@ gl_FragColor = baseColor * (lightColor + 0.25);
 uiwebview 滚动卡顿可能原因 将滚动参数调整为 正常速度：
  _web.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
  
+ decelerationRate范围为0-----1，一般0---0.5没有多少区别。0也没有问题。
+
+decelerationrate 设置当它减速时的速度,0.1f的话,很快就停下来,1就正常速度停下,即滑动一定距离才停.
+ 
  
  UIScrollViewDecelerationRateFast：更快,但是体现的效果是会有一点卡顿
 ***
