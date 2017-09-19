@@ -1,4 +1,7 @@
+Visual Studio：
 
+Ctrl + - = 让光标移动到它先前的位置
+***
 数据持久化：http://www.cocoachina.com/ios/20150720/12610.html
 
 
