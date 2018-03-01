@@ -191,7 +191,9 @@ uniform变量一般用来表示：变换矩阵，材质，光照参数和颜色�
 
 uniform mat4 viewProjMatrix; //投影+视图矩阵
 uniform mat4 viewMatrix;        //视图矩阵
-uniform vec3 lightPosition;     //光源位置
+uniform vec3 lightPosition;     //光源
+
+
 
  
 
